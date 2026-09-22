@@ -1,3 +1,10 @@
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,9 +12,110 @@
 }
 
 body {
-    background: #0e0d0d;
+    background: linear-gradient(135deg, #040404 80%, #f1efef 100%);
     position: relative;
     overflow-x: hidden;
+    color-scheme: dark;
+}
+
+/* Fixed Gear/Wrench Floating Quick Tools Widget */
+.fixed-quick-tools-wrapper {
+    position: fixed;
+    right: 28px;
+    top: 110px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.fixed-gear-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.fixed-gear-btn:hover {
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.35);
+}
+
+.gear-wrench-icon {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: rotate(60deg);
+    /* Bent at 60deg towards right at start (options hidden) */
+}
+
+.fixed-gear-btn.open .gear-wrench-icon {
+    transform: rotate(10deg);
+    /* Bends to 10deg on click (options shown) */
+}
+
+.fixed-tools-menu {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 145px;
+    animation: fixedMenuFadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fixedMenuFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fixed-tool-option {
+    background: #0d0e12;
+    border: 1px solid #27272a;
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+.fixed-tool-option:hover {
+    background: #181920;
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateX(-3px);
+}
+
+.tool-option-icon {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #e4e4e7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tool-option-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+    font-family: sans-serif;
 }
 
 .main-container {
@@ -855,12 +963,10 @@ body {
     transform: translateX(-50%);
     width: 40%;
     height: 1px;
-    background: linear-gradient(
-        to right,
-        transparent,
-        rgba(181, 119, 3, 0.9),
-        transparent
-    );
+    background: linear-gradient(to right,
+            transparent,
+            rgba(181, 119, 3, 0.9),
+            transparent);
     box-shadow: 0 0 10px rgba(181, 119, 3, 0.8);
 }
 
@@ -1399,9 +1505,20 @@ body {
 }
 
 @keyframes livePulse {
-    0% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(1.2); }
-    100% { opacity: 1; transform: scale(1); }
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .popular-badge {
@@ -1480,7 +1597,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 8px 14px;
-    background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+    background: linear-gradient(135deg, #e2e8f0 0%, #ca8a04 100%);
     color: #000000;
     font-size: 0.8rem;
     font-weight: 700;
@@ -1797,13 +1914,33 @@ body {
     box-shadow: 0 0 8px rgba(74, 222, 128, 0.3);
 }
 
-.bar-mon { height: 22px; }
-.bar-tue { height: 34px; }
-.bar-wed { height: 18px; }
-.bar-thu { height: 38px; }
-.bar-fri { height: 30px; }
-.bar-sat { height: 25px; }
-.bar-sun { height: 42px; }
+.bar-mon {
+    height: 22px;
+}
+
+.bar-tue {
+    height: 34px;
+}
+
+.bar-wed {
+    height: 18px;
+}
+
+.bar-thu {
+    height: 38px;
+}
+
+.bar-fri {
+    height: 30px;
+}
+
+.bar-sat {
+    height: 25px;
+}
+
+.bar-sun {
+    height: 42px;
+}
 
 .day-label {
     font-size: 0.68rem;
@@ -1862,6 +1999,9 @@ body {
 /* Continuous Marquee Track */
 .company-marquee-wrapper {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
     position: relative;
     padding: 35px 0;
@@ -1891,9 +2031,11 @@ body {
 .company-marquee-track {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 85px;
     width: max-content;
-    animation: marqueeScroll 26s linear infinite;
+    margin: 0 auto;
+    animation: marqueeScroll 36s linear infinite;
 }
 
 .company-marquee-track:hover {
@@ -1904,8 +2046,9 @@ body {
     0% {
         transform: translateX(0);
     }
+
     100% {
-        transform: translateX(-50%);
+        transform: translateX(-16.666667%);
     }
 }
 
@@ -2002,25 +2145,30 @@ body {
     width: 100%;
 }
 
-/* 3D Flip Card for Mentors */
+/* 3D Flip Card for Mentors - Hardware Accelerated Smoothness */
 .mentor-card-wrapper {
-    perspective: 1000px;
+    perspective: 1200px;
+    -webkit-perspective: 1200px;
     width: 100%;
     max-width: 420px;
     height: 480px;
     cursor: pointer;
+    will-change: transform;
 }
 
 .mentor-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    will-change: transform;
     border-radius: 20px;
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.65);
 }
 
+.mentor-card-wrapper:hover .mentor-card-inner,
 .mentor-card-wrapper.flipped .mentor-card-inner {
     transform: rotateY(180deg);
 }
@@ -2034,16 +2182,21 @@ body {
     height: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: #040405;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .mentor-card-wrapper:hover .mentor-card-front,
-.mentor-card-wrapper:hover .mentor-card-back {
+.mentor-card-wrapper:hover .mentor-card-back,
+.mentor-card-wrapper.flipped .mentor-card-front,
+.mentor-card-wrapper.flipped .mentor-card-back {
     border-color: rgba(234, 179, 8, 0.45);
     box-shadow: 0 0 30px rgba(234, 179, 8, 0.18);
 }
@@ -2088,7 +2241,7 @@ body {
     left: 0;
     right: 0;
     padding: 24px;
-    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.98) 100%);
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.85) 40%, rgba(0, 0, 0, 0.98) 100%);
     z-index: 2;
 }
 
@@ -2360,6 +2513,7 @@ body {
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(-50%);
     }
@@ -2369,6 +2523,7 @@ body {
     0% {
         transform: translateX(-50%);
     }
+
     100% {
         transform: translateX(0);
     }
@@ -2633,7 +2788,69 @@ body {
         flex-direction: column;
         gap: 40px;
     }
+
     .footer-links-grid {
         gap: 40px;
+    }
+}
+
+/* Smooth Performance & Hardware Acceleration for Marquees */
+.company-marquee-track,
+.review-marquee-track {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Mobile & Tablet Responsiveness Enhancements */
+@media (max-width: 768px) {
+    .navigation-bar {
+        width: 92%;
+        padding: 8px 14px;
+    }
+
+    .fixed-quick-tools-wrapper {
+        right: 14px;
+        top: 90px;
+    }
+
+    .fixed-gear-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    .gear-wrench-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .fixed-tools-menu {
+        width: 135px;
+    }
+
+    .fixed-tool-option {
+        padding: 10px 14px;
+    }
+
+    .review-card {
+        width: 280px;
+        height: 160px;
+        padding: 18px 20px;
+    }
+
+    .faq-accordion-container {
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    #heading-faq {
+        font-size: 1.35rem !important;
+        white-space: normal !important;
+    }
+
+    .fixed-quick-tools-wrapper {
+        right: 10px;
+        top: 80px;
     }
 }

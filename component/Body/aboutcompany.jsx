@@ -130,19 +130,14 @@ const AboutCompany = () => {
       {/* Infinite Right-to-Left Marquee Track */}
       <div className="company-marquee-wrapper">
         <div className="company-marquee-track">
-          {/* First Copy of Logos */}
-          {companyLogos.map((company, index) => (
-            <div key={`c1-${company.id}-${index}`} className="company-logo-item">
-              {company.svg}
-            </div>
-          ))}
-
-          {/* Second Duplicate Copy of Logos for Seamless Infinite Loop */}
-          {companyLogos.map((company, index) => (
-            <div key={`c2-${company.id}-${index}`} className="company-logo-item">
-              {company.svg}
-            </div>
-          ))}
+          {/* 6 Repeated Copies of Logos for Seamless Infinite Loop at 20% Zoom */}
+          {[1, 2, 3, 4, 5, 6].map((copyNum) =>
+            companyLogos.map((company, index) => (
+              <div key={`c${copyNum}-${company.id}-${index}`} className="company-logo-item">
+                {company.svg}
+              </div>
+            ))
+          )}
         </div>
       </div>
 

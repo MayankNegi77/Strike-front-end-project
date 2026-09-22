@@ -4,6 +4,9 @@ export default function StrikeLogo() {
   // Active tab on right panel: 'ai' | 'bugs' | 'static'
   const [activeRightTab, setActiveRightTab] = useState('ai');
   
+  // Floating Gear/Wrench quick tools widget state
+  const [isToolsOpen, setIsToolsOpen] = useState(false);
+  
   // Terminal logs state
   const [terminalLogs, setTerminalLogs] = useState([
     { type: 'system', text: 'Welcome to Strike Terminal! ✨' }
@@ -72,6 +75,48 @@ welcome();`);
 
   return (
     <>
+      {/* Fixed Gear/Wrench Quick Tools Floating Widget across the page */}
+      <div className="fixed-quick-tools-wrapper">
+        <button 
+          className={`fixed-gear-btn ${isToolsOpen ? 'open' : ''}`}
+          onClick={() => setIsToolsOpen(!isToolsOpen)}
+          aria-label="Toggle Quick Tools"
+          title="Quick Tools"
+        >
+          <svg 
+            className="gear-wrench-icon" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2.2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          >
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+          </svg>
+        </button>
+
+        {isToolsOpen && (
+          <div className="fixed-tools-menu">
+            <div className="fixed-tool-option" onClick={() => {
+              const el = document.querySelector('.code-editor');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}>
+              <span className="tool-option-icon">&lt;/&gt;</span>
+              <span className="tool-option-label">Compiler</span>
+            </div>
+            <div className="fixed-tool-option">
+              <span className="tool-option-icon">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+              </span>
+              <span className="tool-option-label">Drawing</span>
+            </div>
+          </div>
+        )}
+      </div>
+
       <section className="strike-thought">
         <div className="logo-div">
           <h1 className="logo-heading">

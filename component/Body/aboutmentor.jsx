@@ -34,8 +34,6 @@ const MentorCard = ({ mentor }) => {
   return (
     <div
       className={`mentor-card-wrapper ${isFlipped ? "flipped" : ""}`}
-      onMouseEnter={() => setIsFlipped(true)}
-      onMouseLeave={() => setIsFlipped(false)}
       onClick={toggleFlip}
     >
       <div className="mentor-card-inner">
