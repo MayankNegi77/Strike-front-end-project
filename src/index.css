@@ -295,9 +295,17 @@ body {
     border-radius: 50%;
 }
 
-.dot.red { background: #ef4444; }
-.dot.yellow { background: #f59e0b; }
-.dot.green { background: #10b981; }
+.dot.red {
+    background: #ef4444;
+}
+
+.dot.yellow {
+    background: #f59e0b;
+}
+
+.dot.green {
+    background: #10b981;
+}
 
 .file-tab {
     background: #1c1c21;
@@ -426,7 +434,10 @@ body {
 
 .code-textarea {
     position: absolute;
-    top: 0; left: 16px; right: 16px; bottom: 0;
+    top: 0;
+    left: 16px;
+    right: 16px;
+    bottom: 0;
     width: calc(100% - 32px);
     height: 100%;
     background: transparent;
@@ -455,10 +466,23 @@ body {
     color: #e4e4e7;
 }
 
-.token-comment { color: #4ba246; font-style: italic; }
-.token-keyword { color: #3b82f6; font-weight: 600; }
-.token-function { color: #eab308; }
-.token-string { color: #a855f7; }
+.token-comment {
+    color: #4ba246;
+    font-style: italic;
+}
+
+.token-keyword {
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+.token-function {
+    color: #eab308;
+}
+
+.token-string {
+    color: #a855f7;
+}
 
 /* Terminal */
 .ide-terminal {
@@ -495,14 +519,38 @@ body {
     word-break: break-word;
 }
 
-.terminal-log-line.system { color: #38bdf8; }
-.terminal-log-line.command { color: #a1a1aa; }
-.terminal-log-line.info { color: #eab308; }
-.terminal-log-line.output { color: #4ade80; font-weight: 600; }
-.terminal-log-line.success { color: #22c55e; font-weight: 700; }
+.terminal-log-line.system {
+    color: #38bdf8;
+}
 
-.prompt-line { display: flex; align-items: center; gap: 8px; }
-.prompt-symbol { color: #22c55e; font-weight: 800; }
+.terminal-log-line.command {
+    color: #a1a1aa;
+}
+
+.terminal-log-line.info {
+    color: #eab308;
+}
+
+.terminal-log-line.output {
+    color: #4ade80;
+    font-weight: 600;
+}
+
+.terminal-log-line.success {
+    color: #22c55e;
+    font-weight: 700;
+}
+
+.prompt-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.prompt-symbol {
+    color: #22c55e;
+    font-weight: 800;
+}
 
 /* Right Panel */
 .ide-sidebar-panel {
@@ -540,7 +588,8 @@ body {
     content: '';
     position: absolute;
     bottom: -5px;
-    left: 0; right: 0;
+    left: 0;
+    right: 0;
     height: 2px;
     background: #f4f4f5;
 }
@@ -602,12 +651,15 @@ body {
     .navigation-bar {
         width: 92%;
     }
+
     .code-editor {
         width: 95%;
     }
+
     .ide-body-split {
         grid-template-columns: 1fr;
     }
+
     .ide-editor-area {
         border-right: none;
         border-bottom: 1px solid #27272a;
@@ -694,7 +746,8 @@ body {
         padding: 10px 14px;
     }
 
-    .header-left-controls, .header-right-controls {
+    .header-left-controls,
+    .header-right-controls {
         gap: 10px;
     }
 
@@ -750,5 +803,420 @@ body {
     .sidebar-tab {
         font-size: 0.8rem;
         white-space: nowrap;
+    }
+}
+
+.member-ship {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 80px;
+    width: 100%;
+    background-color: #070708;
+    padding: 60px 20px;
+}
+
+/* Top Golden Glow Line */
+.member-ship::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(181, 119, 3, 0.9),
+        transparent
+    );
+    box-shadow: 0 0 10px rgba(181, 119, 3, 0.8);
+}
+
+#member-ship-content {
+    text-align: center;
+    max-width: 800px;
+    margin-bottom: 40px;
+    padding: 0 16px;
+}
+
+.paragraph-strike {
+    font-family: "Audiowide", sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 2.5px;
+    color: #b57703;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.membership {
+    font-family: "Audiowide", sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.plans {
+    color: #9ea0a5;
+}
+
+.thought-strike {
+    color: #a1a1aa;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+#Every-course-para {
+    color: #52525b;
+    font-size: 0.98rem;
+    display: block;
+    margin-top: 6px;
+}
+
+/* Plan Cards Grid Container */
+.plan-cards {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    align-items: stretch;
+    max-width: 1080px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Base Card Style */
+.plan-card {
+    flex: 1;
+    min-width: 320px;
+    max-width: 500px;
+    background: #0d0e11;
+    border-radius: 20px;
+    border: 1px solid #1f2229;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.plan-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Strike Ultra Card Glow & Border */
+.strike-ultra-card {
+    background: #0d0b04;
+    border: 1px solid rgba(234, 179, 8, 0.45);
+    box-shadow: 0 0 35px rgba(234, 179, 8, 0.12), 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.strike-ultra-card:hover {
+    box-shadow: 0 0 45px rgba(234, 179, 8, 0.2), 0 24px 48px rgba(0, 0, 0, 0.7);
+}
+
+/* Banner Image Wrapper */
+.card-banner-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid #1f2229;
+    background: #000;
+}
+
+.strike-ultra-card .card-banner-wrapper {
+    border-bottom: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+.card-banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Card Body Content */
+.card-body {
+    padding: 28px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels & Typography */
+.plan-sub-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #64748b;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-family: 'Fira Code', monospace;
+}
+
+.ultra-sub-label {
+    color: #eab308;
+}
+
+.plan-title {
+    font-family: "Audiowide", sans-serif;
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.plan-desc {
+    color: #94a3b8;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    min-height: 42px;
+}
+
+/* Duration Selector */
+.duration-section {
+    margin-bottom: 24px;
+}
+
+.duration-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    color: #64748b;
+    margin-bottom: 10px;
+    display: block;
+    font-family: 'Fira Code', monospace;
+}
+
+.ultra-label {
+    color: #ca8a04;
+}
+
+.duration-pills {
+    display: flex;
+    gap: 6px;
+    background: #14161d;
+    padding: 4px;
+    border-radius: 12px;
+    border: 1px solid #222631;
+}
+
+.strike-ultra-card .duration-pills {
+    background: #151307;
+    border: 1px solid rgba(234, 179, 8, 0.25);
+}
+
+.duration-pill {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: #94a3b8;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.duration-pill:hover {
+    color: #ffffff;
+}
+
+.duration-pill.active {
+    background: #ffffff;
+    color: #000000;
+    font-weight: 700;
+}
+
+.duration-pill.ultra-pill.active {
+    background: #eab308;
+    color: #000000;
+    font-weight: 700;
+}
+
+.pill-badge {
+    font-size: 0.65rem;
+    color: #64748b;
+}
+
+.duration-pill.active .pill-badge {
+    color: #334155;
+}
+
+/* Pricing Section */
+.price-section {
+    margin-bottom: 28px;
+}
+
+.price-main {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+}
+
+.currency-symbol {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #cbd5e1;
+    align-self: flex-start;
+    margin-top: 4px;
+}
+
+.ultra-currency {
+    color: #eab308;
+}
+
+.price-amount {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ffffff;
+    font-family: 'Audiowide', sans-serif;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
+.original-price {
+    font-size: 0.95rem;
+    color: #64748b;
+    text-decoration: line-through;
+    margin-left: 2px;
+}
+
+.discount-tag {
+    background: #1c202a;
+    color: #ffffff;
+    border: 1px solid #2e3445;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+.ultra-discount-tag {
+    background: rgba(234, 179, 8, 0.15);
+    color: #eab308;
+    border: 1px solid rgba(234, 179, 8, 0.35);
+}
+
+.popular-tag {
+    background: #f1f5f9;
+    color: #0f172a;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 6px;
+}
+
+.ultra-popular-tag {
+    background: #eab308;
+    color: #000000;
+}
+
+.duration-note {
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+/* Features List */
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+.features-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.92rem;
+    color: #e2e8f0;
+}
+
+.check-icon {
+    color: #64748b;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.ultra-check {
+    color: #ca8a04;
+}
+
+/* Action Buttons */
+.plan-action-btn {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.25s ease;
+    border: none;
+    margin-top: auto;
+}
+
+.btn-strike-plus {
+    background: #181b22;
+    color: #ffffff;
+    border: 1px solid #2d3342;
+}
+
+.btn-strike-plus:hover {
+    background: #252b37;
+    border-color: #475569;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.btn-strike-ultra {
+    background: #eab308;
+    color: #0f0d06;
+    font-weight: 800;
+}
+
+.btn-strike-ultra:hover {
+    background: #facc15;
+    box-shadow: 0 0 25px rgba(234, 179, 8, 0.45);
+    transform: translateY(-2px);
+}
+
+/* Footer Note */
+.membership-footer-note {
+    color: #475569;
+    font-size: 0.82rem;
+    margin-top: 40px;
+    text-align: center;
+    font-family: 'Fira Code', monospace;
+}
+
+/* Responsive Styles */
+@media (max-width: 850px) {
+    .plan-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .plan-card {
+        width: 100%;
+        max-width: 460px;
     }
 }
