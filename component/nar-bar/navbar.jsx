@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
         <div className="navigation-container">
-            <div className={`navigation-bar ${isMenuOpen ? 'mobile-open' : ''}`}>
+            <div className={`navigation-bar ${isMenuOpen ? 'mobile-open' : ''} ${isScrolled ? 'scrolled' : ''}`}>
 
                 <div className="span-tag">
                     <a href="/" className="strike-spantag">

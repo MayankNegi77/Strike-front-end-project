@@ -49,7 +49,35 @@ body {
     box-shadow:
         0 0 1px rgba(236, 242, 243, 0.954),
         inset 0 0 20px rgba(255, 255, 255, 0.02);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.span-tag,
+.Get-start {
+    transition: opacity 0.3s ease, max-width 0.4s ease, transform 0.3s ease, margin 0.3s ease;
+    max-width: 200px;
+    opacity: 1;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.navigation-bar.scrolled {
+    width: fit-content;
+    padding: 6px 20px;
+    margin-top: 14px;
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.7),
+        0 0 1px rgba(236, 242, 243, 0.954);
+}
+
+.navigation-bar.scrolled .span-tag,
+.navigation-bar.scrolled .Get-start {
+    opacity: 0;
+    max-width: 0;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    transform: scale(0.8);
 }
 
 /* Logo */
@@ -2216,4 +2244,170 @@ body {
     .mentors-container {
         flex-direction: column;
     }
+}
+
+/* Reviews Section (Trusted by Visionaries) */
+.review-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #000000;
+    padding: 85px 0 110px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.review-header {
+    text-align: center;
+    max-width: 900px;
+    margin-bottom: 44px;
+    padding: 0 20px;
+}
+
+.review-star-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #9ea0a5;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.star-icon {
+    color: #eab308;
+    font-size: 0.85rem;
+}
+
+#heading-review {
+    font-family: "Audiowide", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: #ffffff;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+}
+
+#para-review {
+    color: #9ea0a5;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    text-align: center;
+}
+
+/* Marquee Tracks */
+.review-marquee-wrapper {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    padding: 10px 0;
+}
+
+.margin-top-row {
+    margin-top: 18px;
+}
+
+.review-marquee-wrapper::before,
+.review-marquee-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.review-marquee-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, #000000 20%, transparent 100%);
+}
+
+.review-marquee-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, #000000 20%, transparent 100%);
+}
+
+.review-marquee-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+}
+
+/* Row 1: Right to Left */
+.track-row1 {
+    animation: reviewScroll1 28s linear infinite;
+}
+
+/* Row 2: Left to Right */
+.track-row2 {
+    animation: reviewScroll2 28s linear infinite;
+}
+
+.review-marquee-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes reviewScroll1 {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes reviewScroll2 {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Individual Review Card (3 cards visible at a time) */
+.review-card {
+    background: #090a0d;
+    border: 1px solid #1a1c23;
+    border-radius: 16px;
+    padding: 22px 24px;
+    width: 320px;
+    height: 165px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.review-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.65);
+    transform: translateY(-2px);
+}
+
+.review-user-name {
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.review-text {
+    color: #a1a1aa;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
