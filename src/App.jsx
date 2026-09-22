@@ -4,6 +4,7 @@ import MemberShipPlane from '../component/Body/memberShipPlans.jsx'
 import Whatweoffer from '../component/Body/whatweoffer.jsx'
 import WhyChooseUs from '../component/Body/whyChooseus.jsx'
 import AboutCompany from '../component/Body/aboutcompany.jsx'
+import AboutMentor from '../component/Body/aboutmentor.jsx'
 
 export default function App() {
     return (<>
@@ -14,6 +15,7 @@ export default function App() {
             <Whatweoffer></Whatweoffer>
             <WhyChooseUs></WhyChooseUs>
             <AboutCompany></AboutCompany>
+            <AboutMentor></AboutMentor>
         </div>
     </>)
 }
