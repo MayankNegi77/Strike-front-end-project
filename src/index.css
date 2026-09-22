@@ -2411,3 +2411,229 @@ body {
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 }
+
+/* FAQ Section (Your Questions, Answered) */
+.faq-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #000000;
+    padding: 85px 20px 110px 20px;
+    position: relative;
+}
+
+.faq-header {
+    text-align: center;
+    max-width: 950px;
+    width: 100%;
+    margin-bottom: 48px;
+}
+
+#heading-faq {
+    font-family: "Audiowide", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(1.5rem, 3.8vw, 2.6rem);
+    color: #ffffff;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+}
+
+#para-faq {
+    color: #9ea0a5;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* FAQ Accordion List */
+.faq-accordion-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: #090a0d;
+    border: 1px solid #1f2229;
+    border-radius: 20px;
+    padding: 22px 28px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.faq-item.open {
+    border-color: rgba(234, 179, 8, 0.45);
+    background: #0d0e14;
+    box-shadow: 0 0 20px rgba(234, 179, 8, 0.12);
+}
+
+.faq-question-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.faq-question-text {
+    color: #ffffff;
+    font-size: 1.08rem;
+    font-weight: 500;
+    line-height: 1.35;
+    margin: 0;
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    color: #ffffff;
+    font-weight: 300;
+    transition: transform 0.3s ease, color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.faq-item.open .faq-icon {
+    color: #eab308;
+}
+
+.faq-answer-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin-top 0.3s ease, padding-top 0.3s ease;
+}
+
+.faq-item.open .faq-answer-wrapper {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 14px;
+}
+
+.faq-answer-text {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+/* Footer Section */
+.footer-section {
+    width: 100%;
+    background-color: #000000;
+    padding: 85px 20px 45px 20px;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-container {
+    max-width: 1240px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.footer-brand-col {
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-logo {
+    font-family: "Audiowide", sans-serif;
+    font-weight: 400;
+    font-size: 2.2rem;
+    color: #ffffff;
+    text-decoration: none;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.footer-description {
+    color: #cbd5e1;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    font-weight: 400;
+}
+
+.footer-links-grid {
+    display: flex;
+    gap: 90px;
+    flex-wrap: wrap;
+}
+
+.footer-link-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-col-title {
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 22px;
+    letter-spacing: 0.3px;
+}
+
+.footer-link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-link-list a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 1.02rem;
+    font-weight: 400;
+    transition: color 0.25s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.footer-link-list a:hover {
+    color: #ffffff;
+    transform: translateX(3px);
+}
+
+.footer-bottom-row {
+    max-width: 1240px;
+    width: 100%;
+    padding-top: 10px;
+    border-top: none;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.footer-copyright {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+@media (max-width: 850px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .footer-links-grid {
+        gap: 40px;
+    }
+}
