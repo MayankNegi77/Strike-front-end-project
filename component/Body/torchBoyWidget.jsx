@@ -1,11 +1,55 @@
 import React, { useState, useEffect } from "react";
 
+const couponSlides = [
+  {
+    id: 1,
+    badge: "MEMBERSHIP PLAN",
+    title: "Strike Plus Membership",
+    description: "Access all current DSA, System Design & Dev Courses",
+    originalPrice: "₹12,499",
+    discountPrice: "₹6,249",
+    savings: "Save ₹6,250",
+    image: "/images/strike-plus-banner.png",
+  },
+  {
+    id: 2,
+    badge: "MOST POPULAR",
+    title: "Strike Ultra Membership",
+    description: "Includes all current + all upcoming future course batches",
+    originalPrice: "₹13,499",
+    discountPrice: "₹6,749",
+    savings: "Save ₹6,750",
+    image: "/images/strike-ultra-banner.png",
+  },
+  {
+    id: 3,
+    badge: "COMBO COURSE",
+    title: "DSA + GenAI Combo",
+    description: "Master Data Structures, Algorithms & Generative AI",
+    originalPrice: "₹14,999",
+    discountPrice: "₹7,499",
+    savings: "Save ₹7,500",
+    image: "/images/photos/WhatsApp Image 2026-09-22 at 6.14.29 PM.jpeg",
+  },
+  {
+    id: 4,
+    badge: "FULL BOOTCAMP",
+    title: "Thunder: 100 Days of Code",
+    description: "Web Dev + System Design + Security + DevOps",
+    originalPrice: "₹12,999",
+    discountPrice: "₹6,499",
+    savings: "Save ₹6,500",
+    image: "/images/photos/WhatsApp Image 2026-09-22 at 6.14.30 PM (1).jpeg",
+  },
+];
+
 export default function TorchBoyWidget({ onApplyDiscount }) {
   const [isDismissed, setIsDismissed] = useState(false);
   const [isLightActive, setIsLightActive] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isApplied, setIsApplied] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
 
   // Countdown timer state
   const [timeLeft, setTimeLeft] = useState({ hours: 5, minutes: 24, seconds: 45 });
@@ -25,6 +69,15 @@ export default function TorchBoyWidget({ onApplyDiscount }) {
     }, 1000);
     return () => clearInterval(timer);
   }, []);
+
+  // Auto-rotate slideshow every 3.5 seconds
+  useEffect(() => {
+    if (!isModalOpen || isApplied) return;
+    const slideTimer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % couponSlides.length);
+    }, 3500);
+    return () => clearInterval(slideTimer);
+  }, [isModalOpen, isApplied]);
 
   if (isDismissed) return null;
 
@@ -60,6 +113,16 @@ export default function TorchBoyWidget({ onApplyDiscount }) {
     navigator.clipboard.writeText("FUTURE50");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handlePrevSlide = (e) => {
+    e.stopPropagation();
+    setActiveSlide((prev) => (prev === 0 ? couponSlides.length - 1 : prev - 1));
+  };
+
+  const handleNextSlide = (e) => {
+    e.stopPropagation();
+    setActiveSlide((prev) => (prev + 1) % couponSlides.length);
   };
 
   const formatNumber = (num) => String(num).padStart(2, "0");
@@ -128,6 +191,81 @@ export default function TorchBoyWidget({ onApplyDiscount }) {
                 <p className="coupon-subtitle">
                   Get instant <strong>50% OFF</strong> on all DSA, System Design & Gen AI courses.
                 </p>
+
+                {/* Standard Monochrome Interactive Discount Slideshow */}
+                <div className="coupon-slideshow-container">
+                  <div className="slideshow-header">
+                    <span className="slideshow-subheading">UNLOCKED DISCOUNTS ON APPLY:</span>
+                    <span className="slideshow-counter">
+                      {activeSlide + 1} / {couponSlides.length}
+                    </span>
+                  </div>
+
+                  <div className="slideshow-card-frame">
+                    {/* Navigation Arrow Left */}
+                    <button
+                      className="slide-nav-btn prev-btn"
+                      type="button"
+                      onClick={handlePrevSlide}
+                      title="Previous Discount"
+                    >
+                      ‹
+                    </button>
+
+                    {/* Current Active Slide Content */}
+                    <div className="active-slide-content" key={activeSlide}>
+                      <div className="slide-image-wrapper">
+                        <img
+                          src={couponSlides[activeSlide].image}
+                          alt={couponSlides[activeSlide].title}
+                          className="slide-img"
+                        />
+                        <span className="slide-badge-tag">
+                          {couponSlides[activeSlide].badge}
+                        </span>
+                      </div>
+
+                      <div className="slide-text-info">
+                        <h4 className="slide-title">{couponSlides[activeSlide].title}</h4>
+                        <p className="slide-desc">{couponSlides[activeSlide].description}</p>
+
+                        <div className="slide-price-row">
+                          <div className="slide-prices">
+                            <span className="slide-orig-price">{couponSlides[activeSlide].originalPrice}</span>
+                            <span className="slide-disc-price">{couponSlides[activeSlide].discountPrice}</span>
+                          </div>
+                          <span className="slide-save-pill">
+                            {couponSlides[activeSlide].savings} (50% OFF)
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Navigation Arrow Right */}
+                    <button
+                      className="slide-nav-btn next-btn"
+                      type="button"
+                      onClick={handleNextSlide}
+                      title="Next Discount"
+                    >
+                      ›
+                    </button>
+                  </div>
+
+                  {/* Dot Indicators */}
+                  <div className="slideshow-dots-row">
+                    {couponSlides.map((_, idx) => (
+                      <button
+                        key={idx}
+                        className={`slide-dot ${activeSlide === idx ? "active" : ""}`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveSlide(idx);
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
 
                 {/* Promo Code Box */}
                 <div className="coupon-code-box">
