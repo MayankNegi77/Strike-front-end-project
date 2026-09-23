@@ -1,6 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+const heroSlides = [
+  {
+    id: 1,
+    badge: "PLUS",
+    title: "Strike Plus Membership",
+    price: "₹6,249",
+    origPrice: "₹12,499",
+    off: "50% OFF",
+  },
+  {
+    id: 2,
+    badge: "ULTRA",
+    title: "Strike Ultra Membership",
+    price: "₹6,749",
+    origPrice: "₹13,499",
+    off: "50% OFF",
+  },
+  {
+    id: 3,
+    badge: "COMBO",
+    title: "DSA + GenAI Combo",
+    price: "₹7,499",
+    origPrice: "₹14,999",
+    off: "50% OFF",
+  },
+  {
+    id: 4,
+    badge: "BOOTCAMP",
+    title: "Thunder: 100 Days of Code",
+    price: "₹6,499",
+    origPrice: "₹12,999",
+    off: "50% OFF",
+  },
+];
 
 export default function StrikeLogo() {
+  const [heroSlideIdx, setHeroSlideIdx] = useState(0);
+
+  // Auto-rotate hero membership slideshow every 3.2 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeroSlideIdx((prev) => (prev + 1) % heroSlides.length);
+    }, 3200);
+    return () => clearInterval(timer);
+  }, []);
   // Active tab on right panel: 'ai' | 'bugs' | 'static'
   const [activeRightTab, setActiveRightTab] = useState('ai');
   
@@ -127,6 +171,62 @@ welcome();`);
           </h1>
           <p className="paragraph">Master DSA, System Design & AI with interactive coding </p>
           <span id="evn" className="paragraph">environments</span>
+
+          {/* Standard Monochrome Hero Membership Ticker Slideshow */}
+          <div
+            className="hero-membership-ticker"
+            onClick={() => {
+              const el = document.querySelector(".member-ship");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }}
+            title="Click to view all Membership Plans"
+          >
+            <span className="ticker-badge">
+              {heroSlides[heroSlideIdx].badge}
+            </span>
+            <div className="ticker-content-area" key={heroSlideIdx}>
+              <span className="ticker-title">{heroSlides[heroSlideIdx].title}</span>
+              <div className="ticker-prices">
+                <span className="ticker-price">{heroSlides[heroSlideIdx].price}</span>
+                <span className="ticker-orig">{heroSlides[heroSlideIdx].origPrice}</span>
+              </div>
+              <span className="ticker-off-pill">{heroSlides[heroSlideIdx].off}</span>
+            </div>
+            <div className="ticker-controls">
+              <button
+                type="button"
+                className="ticker-nav-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setHeroSlideIdx((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
+                }}
+              >
+                ‹
+              </button>
+              <div className="ticker-dots">
+                {heroSlides.map((_, idx) => (
+                  <span
+                    key={idx}
+                    className={`ticker-dot ${heroSlideIdx === idx ? "active" : ""}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setHeroSlideIdx(idx);
+                    }}
+                  />
+                ))}
+              </div>
+              <button
+                type="button"
+                className="ticker-nav-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setHeroSlideIdx((prev) => (prev + 1) % heroSlides.length);
+                }}
+              >
+                ›
+              </button>
+            </div>
+          </div>
 
           <button id="join-us" className="nav-button">Join us</button>
         </div>

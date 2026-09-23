@@ -379,12 +379,12 @@ body {
     font-weight: 400;
     font-style: normal;
     border: none;
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     background: transparent;
     color: #f5f5f5;
-    margin-top: 60px;
+    margin-top: 14px;
     margin-left: 0;
-    padding: 12px 28px;
+    padding: 12px 32px;
     border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -398,11 +398,149 @@ body {
     filter: brightness(1.1);
 }
 
+/* Standard Monochrome Hero Membership Ticker Slideshow */
+.hero-membership-ticker {
+    margin-top: 32px;
+    margin-bottom: 14px;
+    background: #090a0f;
+    border: 1px solid #27272a;
+    border-radius: 999px;
+    padding: 10px 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 680px;
+    width: fit-content;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+}
+
+.hero-membership-ticker:hover {
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(255, 255, 255, 0.15);
+}
+
+.ticker-badge {
+    background: #ffffff;
+    color: #000000;
+    font-size: 0.65rem;
+    font-weight: 900;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    font-family: 'Fira Code', monospace;
+    flex-shrink: 0;
+}
+
+.ticker-content-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: tickerFadeIn 0.3s ease-out;
+}
+
+@keyframes tickerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.ticker-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.ticker-prices {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.ticker-price {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #ffffff;
+    font-family: 'Audiowide', sans-serif;
+}
+
+.ticker-orig {
+    font-size: 0.75rem;
+    color: #71717a;
+    text-decoration: line-through;
+}
+
+.ticker-off-pill {
+    background: #18181b;
+    border: 1px solid #3f3f46;
+    color: #ffffff;
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.ticker-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 6px;
+    flex-shrink: 0;
+}
+
+.ticker-nav-btn {
+    background: transparent;
+    border: none;
+    color: #a1a1aa;
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 2px 4px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.ticker-nav-btn:hover {
+    color: #ffffff;
+    transform: scale(1.2);
+}
+
+.ticker-dots {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ticker-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3f3f46;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.ticker-dot.active {
+    background: #ffffff;
+    width: 14px;
+    border-radius: 6px;
+}
+
 /* CODE EDITOR WINDOW */
 .code-editor {
     width: 100%;
     max-width: 1080px;
-    margin: 32px auto 0 auto;
+    margin: 48px auto 0 auto;
 }
 
 .ide-window {
@@ -1164,7 +1302,7 @@ body {
     border: none;
     background: transparent;
     color: #94a3b8;
-    padding: 20px 10px; 
+    padding: 20px 10px;
     border-radius: 8px;
     font-size: 0.82rem;
     font-weight: 600;
@@ -3025,17 +3163,13 @@ body {
 /* Card with Rich Ambient Golden Aura & Lighting */
 .torch-modal-card {
     background: linear-gradient(145deg, #0e1017 0%, #050609 100%);
-    border: 1px solid rgba(234, 179, 8, 0.5);
+    border: 0px solid #e2e8f0;
     border-radius: 22px;
     padding: 34px 28px;
     max-width: 520px;
     width: 100%;
     position: relative;
-    box-shadow: 
-        0 25px 65px rgba(0, 0, 0, 0.95),
-        0 0 60px rgba(234, 179, 8, 0.35),
-        0 0 120px rgba(234, 179, 8, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 25px 65px rgb(0 0 0), 0 0 60px #f4f4f545, 0 0 120px rgb(234 179 8 / 9%), inset 0 1px 0 rgba(255, 255, 255, 0.2);
     animation: modalPopIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
@@ -3130,8 +3264,15 @@ body {
 }
 
 @keyframes fadeInSlide {
-    from { opacity: 0; transform: translateX(8px); }
-    to { opacity: 1; transform: translateX(0); }
+    from {
+        opacity: 0;
+        transform: translateX(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .slide-image-wrapper {
