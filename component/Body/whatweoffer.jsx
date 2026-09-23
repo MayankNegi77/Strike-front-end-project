@@ -75,11 +75,18 @@ const CourseCard = ({ course }) => {
   }, [isFlipped]);
 
   const handleCardClick = (e) => {
-    // If user clicked inside an action button on the back side, do not unflip
-    if (e.target.closest("button")) {
-      return;
+    if (!isFlipped) {
+      // Front side: ONLY flip when clicking Explore Course button
+      if (e.target.closest(".explore-btn")) {
+        setIsFlipped(true);
+      }
+    } else {
+      // Back side: Unflip when clicking anywhere EXCEPT Read More button
+      if (e.target.closest(".read-more-btn")) {
+        return;
+      }
+      setIsFlipped(false);
     }
-    setIsFlipped((prev) => !prev);
   };
 
   return (
