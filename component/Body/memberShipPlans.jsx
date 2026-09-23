@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const MemberShipPlane = () => {
+const MemberShipPlane = ({ isDiscountApplied }) => {
     const [plusDuration, setPlusDuration] = useState('4 Years');
     const [ultraDuration, setUltraDuration] = useState('4 Years');
 
@@ -31,12 +31,45 @@ const MemberShipPlane = () => {
         }
     };
 
-    const currentPlus = durationData[plusDuration];
-    const currentUltra = durationData[ultraDuration];
+    const discountedData = {
+        '2 Years': {
+            plusPrice: '4,499',
+            plusOriginal: '8,999',
+            plusDiscount: '50% COUPON APPLIED 🎉',
+            ultraPrice: '4,999',
+            ultraOriginal: '9,999',
+            ultraDiscount: '50% COUPON APPLIED 🎉'
+        },
+        '3 Years': {
+            plusPrice: '5,499',
+            plusOriginal: '10,999',
+            plusDiscount: '50% COUPON APPLIED 🎉',
+            ultraPrice: '5,999',
+            ultraOriginal: '11,999',
+            ultraDiscount: '50% COUPON APPLIED 🎉'
+        },
+        '4 Years': {
+            plusPrice: '6,249',
+            plusOriginal: '12,499',
+            plusDiscount: '50% COUPON APPLIED 🎉',
+            ultraPrice: '6,749',
+            ultraOriginal: '13,499',
+            ultraDiscount: '50% COUPON APPLIED 🎉'
+        }
+    };
+
+    const activeData = isDiscountApplied ? discountedData : durationData;
+    const currentPlus = activeData[plusDuration];
+    const currentUltra = activeData[ultraDuration];
 
     return (
         <section className="member-ship">
             <div id="member-ship-content">
+                {isDiscountApplied && (
+                    <div className="discount-applied-banner">
+                        🎉 <strong>FUTURE50 Coupon Applied!</strong> Extra 50% OFF Discount Unlocked on All Plans
+                    </div>
+                )}
                 <p className="paragraph-strike">THE STRIKE MEMBERSHIP</p>
                 <h2 className="membership">
                     Membership

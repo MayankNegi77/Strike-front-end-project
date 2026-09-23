@@ -1,4 +1,6 @@
 import React from "react";
+import { Lottie } from "lottie-react";
+import conversationAnimation from "../../public/animation/Conversation.lottie/animations/12345.json";
 
 const WhyChooseUs = () => {
   return (
@@ -120,72 +122,12 @@ const WhyChooseUs = () => {
             </h3>
           </div>
           <div className="bento-illustration projects-illustration">
-            <svg
-              viewBox="0 0 200 150"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="projects-svg"
-            >
-              <defs>
-                <linearGradient id="purpleGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#c084fc" />
-                  <stop offset="100%" stopColor="#7e22ce" />
-                </linearGradient>
-                <linearGradient id="codeBg" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#18181b" />
-                  <stop offset="100%" stopColor="#09090b" />
-                </linearGradient>
-                <filter id="pGlow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="3" result="blur" />
-                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-              </defs>
-
-              {/* Project Code Window / IDE */}
-              <rect x="25" y="18" width="150" height="100" rx="10" fill="url(#codeBg)" stroke="#3f3f46" strokeWidth="1.5" />
-              <rect x="25" y="18" width="150" height="24" rx="10" fill="#27272a" />
-              
-              {/* Window Dots */}
-              <circle cx="38" cy="30" r="3.5" fill="#ef4444" />
-              <circle cx="48" cy="30" r="3.5" fill="#eab308" />
-              <circle cx="58" cy="30" r="3.5" fill="#22c55e" />
-              
-              {/* File Title */}
-              <text x="70" y="33" fill="#a1a1aa" fontSize="9" fontFamily="monospace">App.jsx &lt;/&gt;</text>
-
-              {/* Code Snippets */}
-              <text x="35" y="56" fill="#c084fc" fontSize="9" fontFamily="monospace" fontWeight="bold">const</text>
-              <text x="68" y="56" fill="#38bdf8" fontSize="9" fontFamily="monospace">BuildProject</text>
-              <text x="135" y="56" fill="#e4e4e7" fontSize="9" fontFamily="monospace">=</text>
-              <text x="145" y="56" fill="#eab308" fontSize="9" fontFamily="monospace">()</text>
-              <text x="157" y="56" fill="#c084fc" fontSize="9" fontFamily="monospace">=&gt;</text>
-              
-              {/* Lines of Code */}
-              <rect x="42" y="65" width="60" height="6" rx="3" fill="#a855f7" />
-              <rect x="108" y="65" width="40" height="6" rx="3" fill="#38bdf8" />
-              
-              <rect x="42" y="77" width="80" height="6" rx="3" fill="#22c55e" />
-              <rect x="128" y="77" width="30" height="6" rx="3" fill="#eab308" />
-              
-              <rect x="42" y="89" width="45" height="6" rx="3" fill="#ec4899" />
-              <rect x="93" y="89" width="65" height="6" rx="3" fill="#a855f7" />
-
-              {/* Floating Tech Stack Badges */}
-              <g transform="translate(15, 100)">
-                <rect x="0" y="0" width="55" height="22" rx="11" fill="#18181b" stroke="#a855f7" strokeWidth="1.5" />
-                <text x="10" y="14" fill="#c084fc" fontSize="10" fontWeight="bold" fontFamily="sans-serif">React</text>
-              </g>
-
-              <g transform="translate(130, 95)">
-                <rect x="0" y="0" width="55" height="22" rx="11" fill="#18181b" stroke="#38bdf8" strokeWidth="1.5" />
-                <text x="12" y="14" fill="#38bdf8" fontSize="10" fontWeight="bold" fontFamily="sans-serif">Build</text>
-              </g>
-
-              {/* Central Glowing Rocket Icon / Launching Project */}
-              <circle cx="100" cy="115" r="18" fill="url(#purpleGlow)" filter="url(#pGlow)" />
-              <path d="M100 104 L106 114 H94 Z" fill="#ffffff" />
-              <path d="M96 114 H104 V122 H96 Z" fill="#ffffff" />
-            </svg>
+            <Lottie
+              src={conversationAnimation}
+              autoplay
+              loop
+              style={{ width: "100%", height: 200, maxWidth: 280 }}
+            />
           </div>
         </div>
 

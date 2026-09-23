@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import NavBar from '../component/nar-bar/navbar.jsx'
 import StrikeLogo from '../component/Body/strikelogo.jsx'
 import MemberShipPlane from '../component/Body/memberShipPlans.jsx'
@@ -8,13 +9,16 @@ import AboutMentor from '../component/Body/aboutmentor.jsx'
 import Review from '../component/Body/review.jsx'
 import Questions from '../component/Body/questioans.jsx'
 import FooterSection from '../component/footer/footersection.jsx'
+import TorchBoyWidget from '../component/Body/torchBoyWidget.jsx'
 
 export default function App() {
+    const [isDiscountApplied, setIsDiscountApplied] = useState(false);
+
     return (<>
         <div className='main-container'>
             <NavBar></NavBar>
             <StrikeLogo></StrikeLogo>
-            <MemberShipPlane></MemberShipPlane>
+            <MemberShipPlane isDiscountApplied={isDiscountApplied}></MemberShipPlane>
             <Whatweoffer></Whatweoffer>
             <WhyChooseUs></WhyChooseUs>
             <AboutCompany></AboutCompany>
@@ -22,6 +26,7 @@ export default function App() {
             <Review></Review>
             <Questions></Questions>
             <FooterSection></FooterSection>
+            <TorchBoyWidget onApplyDiscount={() => setIsDiscountApplied(true)}></TorchBoyWidget>
         </div>
     </>)
 }

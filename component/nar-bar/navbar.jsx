@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Lottie } from 'lottie-react';
+import fistBumpAnimation from '../../public/animation/Fist Bump.lottie/animations/12345.json';
 
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,6 +22,16 @@ const NavBar = () => {
     return (
         <div className="navigation-container">
             <div className={`navigation-bar ${isMenuOpen ? 'mobile-open' : ''} ${isScrolled ? 'scrolled' : ''}`}>
+
+                {/* Leftmost Fist Bump / Handshake Lottie Animation */}
+                <div className="nav-leftmost-animation">
+                    <Lottie 
+                        src={fistBumpAnimation} 
+                        autoplay
+                        loop 
+                        style={{ width: 58, height: 58 }} 
+                    />
+                </div>
 
                 <div className="span-tag">
                     <a href="/" className="strike-spantag">
