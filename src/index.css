@@ -1646,15 +1646,22 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    will-change: transform;
     border-radius: 14px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
-.course-card-wrapper:hover .course-card-inner,
 .course-card-wrapper.flipped .course-card-inner {
     transform: rotateY(180deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .course-card-wrapper:hover .course-card-inner {
+        transform: rotateY(180deg);
+    }
 }
 
 .course-card-front,
@@ -2389,7 +2396,7 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     will-change: transform;
@@ -2397,9 +2404,14 @@ body {
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.65);
 }
 
-.mentor-card-wrapper:hover .mentor-card-inner,
 .mentor-card-wrapper.flipped .mentor-card-inner {
     transform: rotateY(180deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .mentor-card-wrapper:hover .mentor-card-inner {
+        transform: rotateY(180deg);
+    }
 }
 
 .mentor-card-front,
@@ -3344,6 +3356,41 @@ body {
         flex-shrink: 0;
         gap: 2px;
         margin-left: 2px;
+    }
+
+    /* Small Mobile Responsive Enhancements */
+    .duration-pills {
+        gap: 4px;
+        padding: 4px;
+        border-radius: 12px;
+    }
+
+    .duration-pill {
+        padding: 10px 4px;
+        font-size: 0.74rem;
+        gap: 3px;
+    }
+
+    .pill-badge {
+        font-size: 0.58rem;
+        padding: 1px 4px;
+    }
+
+    .price-amount {
+        font-size: 2.3rem;
+    }
+
+    .mentor-card-wrapper {
+        height: 450px;
+    }
+
+    .mentor-card-back {
+        padding: 24px 16px;
+    }
+
+    .mentor-back-bio {
+        font-size: 0.85rem;
+        line-height: 1.45;
     }
 }
 

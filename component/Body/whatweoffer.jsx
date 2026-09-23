@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const coursesData = [
   {
@@ -51,11 +51,42 @@ const coursesData = [
 
 const CourseCard = ({ course }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    if (!isFlipped) return;
+
+    const handleOutsideClick = (e) => {
+      if (cardRef.current && !cardRef.current.contains(e.target)) {
+        setIsFlipped(false);
+      }
+    };
+
+    const timer = setTimeout(() => {
+      window.addEventListener("click", handleOutsideClick);
+      window.addEventListener("touchstart", handleOutsideClick, { passive: true });
+    }, 10);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("click", handleOutsideClick);
+      window.removeEventListener("touchstart", handleOutsideClick);
+    };
+  }, [isFlipped]);
+
+  const handleCardClick = (e) => {
+    // If user clicked inside an action button on the back side, do not unflip
+    if (e.target.closest("button")) {
+      return;
+    }
+    setIsFlipped((prev) => !prev);
+  };
 
   return (
     <div
+      ref={cardRef}
       className={`course-card-wrapper ${isFlipped ? "flipped" : ""}`}
-      onClick={() => setIsFlipped(!isFlipped)}
+      onClick={handleCardClick}
     >
       <div className="course-card-inner">
         {/* FRONT SIDE (Banner image view) */}

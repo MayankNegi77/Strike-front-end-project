@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const mentorsData = [
   {
@@ -25,16 +25,42 @@ const mentorsData = [
 
 const MentorCard = ({ mentor }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const cardRef = useRef(null);
 
-  const toggleFlip = (e) => {
-    e.stopPropagation();
+  useEffect(() => {
+    if (!isFlipped) return;
+
+    const handleOutsideClick = (e) => {
+      if (cardRef.current && !cardRef.current.contains(e.target)) {
+        setIsFlipped(false);
+      }
+    };
+
+    const timer = setTimeout(() => {
+      window.addEventListener("click", handleOutsideClick);
+      window.addEventListener("touchstart", handleOutsideClick, { passive: true });
+    }, 10);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("click", handleOutsideClick);
+      window.removeEventListener("touchstart", handleOutsideClick);
+    };
+  }, [isFlipped]);
+
+  const handleCardClick = (e) => {
+    // If user clicked inside an action button (e.g. Start Learning), do not unflip
+    if (e.target.closest("button") && !e.target.classList.contains("know-more-btn")) {
+      return;
+    }
     setIsFlipped((prev) => !prev);
   };
 
   return (
     <div
+      ref={cardRef}
       className={`mentor-card-wrapper ${isFlipped ? "flipped" : ""}`}
-      onClick={toggleFlip}
+      onClick={handleCardClick}
     >
       <div className="mentor-card-inner">
         {/* FRONT SIDE (Mentor Photo View) */}
@@ -92,7 +118,7 @@ const MentorCard = ({ mentor }) => {
               <button
                 className="know-more-btn"
                 type="button"
-                onClick={toggleFlip}
+                onClick={handleCardClick}
               >
                 Know More
               </button>
