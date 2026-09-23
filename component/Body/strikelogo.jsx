@@ -184,7 +184,7 @@ welcome();`);
             <span className="ticker-badge">
               {heroSlides[heroSlideIdx].badge}
             </span>
-            <div className="ticker-content-area" key={heroSlideIdx}>
+            <div className="ticker-content-area">
               <span className="ticker-title">{heroSlides[heroSlideIdx].title}</span>
               <div className="ticker-prices">
                 <span className="ticker-price">{heroSlides[heroSlideIdx].price}</span>

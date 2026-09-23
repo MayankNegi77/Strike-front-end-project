@@ -7,15 +7,19 @@ const NavBar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
+        let ticking = false;
         const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.scrollY > 40;
+                    setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
+                    ticking = false;
+                });
+                ticking = true;
             }
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -23,16 +27,17 @@ const NavBar = () => {
         <div className="navigation-container">
             <div className={`navigation-bar ${isMenuOpen ? 'mobile-open' : ''} ${isScrolled ? 'scrolled' : ''}`}>
 
-                {/* Leftmost Fist Bump / Handshake Lottie Animation */}
+                {/* Leftmost Handshake Lottie Animation */}
                 <div className="nav-leftmost-animation">
                     <Lottie 
                         src={fistBumpAnimation} 
                         autoplay
                         loop 
-                        style={{ width: 58, height: 58 }} 
+                        style={{ width: 60, height: 60 }} 
                     />
                 </div>
 
+                {/* Logo Tag & Mobile Toggle Button */}
                 <div className="span-tag">
                     <a href="/" className="strike-spantag">
                         STRIKE
