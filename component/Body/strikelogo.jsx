@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+import Card from './commentCard.jsx';
 const heroSlides = [
   {
     id: 1,
@@ -577,6 +577,10 @@ export default function StrikeLogo() {
           </div>
 
           <button id="join-us" className="nav-button">Join us</button>
+        </div>
+
+        <div className='user-comment-card'>
+           <Card></Card>
         </div>
 
         <div className="code-editor">

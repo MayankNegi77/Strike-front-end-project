@@ -11,7 +11,7 @@ import Questions from '../component/Body/questioans.jsx'
 import FooterSection from '../component/footer/footersection.jsx'
 import TorchBoyWidget from '../component/Body/torchBoyWidget.jsx'
 import ScrollReveal from '../component/common/ScrollReveal.jsx'
-
+import Card from '../component/Body/commentCard.jsx'
 export default function App() {
     const [isDiscountApplied, setIsDiscountApplied] = useState(false);
 
@@ -19,7 +19,6 @@ export default function App() {
         <div className='main-container'>
             <NavBar />
             <StrikeLogo />
-            
             <ScrollReveal animation="scroll-open">
                 <MemberShipPlane isDiscountApplied={isDiscountApplied} />
             </ScrollReveal>

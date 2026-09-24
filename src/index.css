@@ -467,7 +467,7 @@ body {
     font-size: 1.25rem;
     background: transparent;
     color: #f5f5f5;
-    margin-top: 14px;
+    margin-top: 35px;
     margin-left: 0;
     padding: 12px 32px;
     border-radius: 30px;
@@ -628,7 +628,7 @@ body {
 .code-editor {
     width: 100%;
     max-width: 1080px;
-    margin: 48px auto 0 auto;
+    margin: 64px auto 0 auto;
 }
 
 .ide-window {
@@ -5349,5 +5349,345 @@ body {
             animation-timeline: view();
             animation-range: entry 5% entry 40%;
         }
+    }
+}
+
+
+.comment-card-container {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.slider-track {
+    display: flex;
+    width: 100%;
+    transition: transform 1s ease-in-out;
+}
+
+
+/* ==========================================================================
+   STUDENT COMMENT CARD MARQUEE SLIDESHOW (Monochrome Black & White Theme)
+   ========================================================================== */
+.comment-section-container {
+    width: 100%;
+    height: 270px;
+    min-height: 270px;
+    max-height: 270px;
+    padding: 20px 0;
+    margin-bottom: 45px;
+    background: transparent !important;
+    background-color: transparent !important;
+    position: relative;
+    border: none !important;
+    box-shadow: none !important;
+    flex-shrink: 0;
+    overflow: visible;
+}
+
+.comment-section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 16px auto;
+    padding: 0 20px;
+}
+
+#heading-comment-section {
+    font-family: "Audiowide", sans-serif;
+    font-weight: 400;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: #ffffff;
+    margin-bottom: 0;
+    letter-spacing: -0.5px;
+}
+
+#para-comment-section {
+    display: none;
+}
+
+/* Marquee Container - Sized for exactly 3 cards in view (887px max-width) */
+.comment-marquee-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 887px;
+    margin: 0 auto;
+    height: fit-content;
+    min-height: 180px;
+    max-height: fit-content;
+    overflow-x: hidden !important;
+    overflow-y: visible;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 10px 0;
+    flex-shrink: 0;
+}
+
+.comment-marquee-wrapper::before,
+.comment-marquee-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 35px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.comment-marquee-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, #060606 0%, rgba(6, 6, 6, 0) 100%);
+}
+
+.comment-marquee-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, #060606 0%, rgba(6, 6, 6, 0) 100%);
+}
+
+.comment-marquee-track {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    width: max-content;
+    will-change: transform;
+    animation: commentMarqueeScroll 90s linear infinite;
+    -webkit-tap-highlight-color: transparent;
+    padding: 10px 0;
+}
+
+.comment-marquee-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes commentMarqueeScroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Single Comment Box Card (Symmetrical center zoom, lifts upward away from Code Editor) */
+.comment-single-card {
+    position: relative;
+    background: #090a0f;
+    border: 1px solid #27272a;
+    border-radius: 14px;
+    padding: 12px 14px;
+    width: 285px;
+    height: 155px;
+    min-height: 155px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+    transform-origin: center center;
+    will-change: transform;
+    transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.comment-single-card:hover {
+    z-index: 9999;
+    height: auto;
+    min-height: 155px;
+    overflow: visible !important;
+    border-color: #ffffff;
+    background: #0e0f18;
+    transform: scale(1.08) translateY(-8px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.95), 0 0 25px rgba(255, 255, 255, 0.2);
+}
+
+.comment-card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+.comment-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.comment-rating-box {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(234, 179, 8, 0.08);
+    border: 1px solid rgba(234, 179, 8, 0.25);
+    padding: 2px 7px;
+    border-radius: 8px;
+}
+
+.comment-rating-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #eab308;
+    letter-spacing: 0.4px;
+    font-family: 'Fira Code', monospace;
+    text-transform: uppercase;
+}
+
+.comment-stars-group {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.comment-quote-mark {
+    font-family: Georgia, serif;
+    font-size: 1.3rem;
+    line-height: 1;
+    color: #3f3f46;
+    margin-bottom: -2px;
+}
+
+.comment-text-content {
+    color: #f4f4f5;
+    font-size: 0.8rem;
+    line-height: 1.42;
+    font-weight: 400;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: 0.1px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    transition: all 0.25s ease;
+}
+
+.comment-single-card:hover .comment-text-content {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
+
+/* Footer Row inside Card: Course Tag + Icon + Explore Course Button */
+.comment-card-footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid #18181b;
+}
+
+.comment-course-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+}
+
+.comment-course-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.comment-course-name {
+    color: #a1a1aa;
+    font-size: 0.74rem;
+    font-weight: 700;
+    font-family: 'Fira Code', monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.comment-explore-btn {
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    font-size: 0.76rem;
+    font-weight: 800;
+    padding: 7px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+}
+
+.comment-explore-btn:hover {
+    background: #e4e4e7;
+    transform: scale(1.04);
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.25);
+}
+
+.comment-explore-btn .btn-arrow {
+    transition: transform 0.2s ease;
+}
+
+.comment-explore-btn:hover .btn-arrow {
+    transform: translateX(3px);
+}
+
+/* Responsive Styles for Comment Marquee */
+@media (max-width: 768px) {
+    .comment-section-container {
+        padding: 50px 0;
+    }
+
+    .comment-single-card {
+        width: 290px;
+        padding: 16px 16px;
+        border-radius: 14px;
+    }
+
+    .comment-text-content {
+        font-size: 0.82rem;
+    }
+
+    .comment-explore-btn {
+        padding: 6px 10px;
+        font-size: 0.72rem;
+    }
+
+    .comment-marquee-wrapper::before,
+    .comment-marquee-wrapper::after {
+        width: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .comment-single-card {
+        width: 260px;
+        padding: 14px 14px;
+        gap: 10px;
+    }
+
+    .comment-text-content {
+        font-size: 0.78rem;
+        line-height: 1.42;
+    }
+
+    .comment-course-name {
+        font-size: 0.7rem;
+    }
+
+    .comment-explore-btn {
+        padding: 5px 8px;
+        font-size: 0.7rem;
     }
 }
