@@ -5450,7 +5450,7 @@ body {
 .comment-marquee-track {
     display: flex;
     align-items: flex-start;
-    gap: 35px;
+    gap: 40px;
     width: max-content;
     will-change: transform;
     animation: commentMarqueeScroll 90s linear infinite;
