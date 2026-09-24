@@ -50,7 +50,7 @@ const FooterSection = () => {
       {/* Bottom Copyright Row */}
       <div className="footer-bottom-row">
         <p className="footer-copyright">
-          © 2025 STRIKE. All rights reserved.
+          © 2026 STRIKE. All rights reserved.
         </p>
       </div>
     </footer>

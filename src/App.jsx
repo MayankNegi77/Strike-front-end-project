@@ -10,23 +10,49 @@ import Review from '../component/Body/review.jsx'
 import Questions from '../component/Body/questioans.jsx'
 import FooterSection from '../component/footer/footersection.jsx'
 import TorchBoyWidget from '../component/Body/torchBoyWidget.jsx'
+import ScrollReveal from '../component/common/ScrollReveal.jsx'
 
 export default function App() {
     const [isDiscountApplied, setIsDiscountApplied] = useState(false);
 
     return (<>
         <div className='main-container'>
-            <NavBar></NavBar>
-            <StrikeLogo></StrikeLogo>
-            <MemberShipPlane isDiscountApplied={isDiscountApplied}></MemberShipPlane>
-            <Whatweoffer></Whatweoffer>
-            <WhyChooseUs></WhyChooseUs>
-            <AboutCompany></AboutCompany>
-            <AboutMentor></AboutMentor>
-            <Review></Review>
-            <Questions></Questions>
-            <FooterSection></FooterSection>
-            <TorchBoyWidget onApplyDiscount={() => setIsDiscountApplied(true)}></TorchBoyWidget>
+            <NavBar />
+            <StrikeLogo />
+            
+            <ScrollReveal animation="scroll-open">
+                <MemberShipPlane isDiscountApplied={isDiscountApplied} />
+            </ScrollReveal>
+
+            <ScrollReveal animation="scroll-open">
+                <Whatweoffer />
+            </ScrollReveal>
+
+            <ScrollReveal animation="scroll-open">
+                <WhyChooseUs />
+            </ScrollReveal>
+
+            <ScrollReveal animation="scroll-open">
+                <AboutCompany />
+            </ScrollReveal>
+
+            <ScrollReveal animation="scroll-open">
+                <AboutMentor />
+            </ScrollReveal>
+
+            <ScrollReveal animation="scroll-open">
+                <Review />
+            </ScrollReveal>
+
+            <ScrollReveal animation="scroll-open">
+                <Questions />
+            </ScrollReveal>
+
+            <ScrollReveal animation="scroll-open">
+                <FooterSection />
+            </ScrollReveal>
+
+            <TorchBoyWidget onApplyDiscount={() => setIsDiscountApplied(true)} />
         </div>
     </>)
 }

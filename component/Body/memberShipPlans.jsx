@@ -1,5 +1,32 @@
 import React, { useState } from 'react';
 
+const BestValueSparkleIcon = ({ size = 16, style = {} }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    style={{ display: "inline-block", verticalAlign: "middle", flexShrink: 0, ...style }}
+  >
+    {/* Main 4-pointed hollow star */}
+    <path
+      d="M12 3.5 C12 7.5 8 12 3.5 12 C8 12 12 16.5 12 20.5 C12 16.5 16 12 20.5 12 C16 12 12 7.5 12 3.5 Z"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      fill="none"
+    />
+    {/* Small top-right 4-point sparkle */}
+    <path
+      d="M20.5 3 C20.5 4.2 19.6 5 18.5 5 C19.6 5 20.5 5.8 20.5 7 C20.5 5.8 21.4 5 22.5 5 C21.4 5 20.5 4.2 20.5 3 Z"
+      fill="currentColor"
+    />
+    {/* Small bottom-left solid circle */}
+    <circle cx="5" cy="18.5" r="1.8" fill="currentColor" />
+  </svg>
+);
+
 const MemberShipPlane = ({ isDiscountApplied }) => {
     const [plusDuration, setPlusDuration] = useState('4 Years');
     const [ultraDuration, setUltraDuration] = useState('4 Years');
@@ -35,26 +62,26 @@ const MemberShipPlane = ({ isDiscountApplied }) => {
         '2 Years': {
             plusPrice: '4,499',
             plusOriginal: '8,999',
-            plusDiscount: '50% COUPON APPLIED 🎉',
+            plusDiscount: '50% COUPON APPLIED',
             ultraPrice: '4,999',
             ultraOriginal: '9,999',
-            ultraDiscount: '50% COUPON APPLIED 🎉'
+            ultraDiscount: '50% COUPON APPLIED'
         },
         '3 Years': {
             plusPrice: '5,499',
             plusOriginal: '10,999',
-            plusDiscount: '50% COUPON APPLIED 🎉',
+            plusDiscount: '50% COUPON APPLIED',
             ultraPrice: '5,999',
             ultraOriginal: '11,999',
-            ultraDiscount: '50% COUPON APPLIED 🎉'
+            ultraDiscount: '50% COUPON APPLIED'
         },
         '4 Years': {
             plusPrice: '6,249',
             plusOriginal: '12,499',
-            plusDiscount: '50% COUPON APPLIED 🎉',
+            plusDiscount: '50% COUPON APPLIED',
             ultraPrice: '6,749',
             ultraOriginal: '13,499',
-            ultraDiscount: '50% COUPON APPLIED 🎉'
+            ultraDiscount: '50% COUPON APPLIED'
         }
     };
 
@@ -67,7 +94,11 @@ const MemberShipPlane = ({ isDiscountApplied }) => {
             <div id="member-ship-content">
                 {isDiscountApplied && (
                     <div className="discount-applied-banner">
-                        🎉 <strong>FUTURE50 Coupon Applied!</strong> Extra 50% OFF Discount Unlocked on All Plans
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '6px' }}>
+                            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                            <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                        </svg>
+                        <strong>FUTURE50 Coupon Applied!</strong> Extra 50% OFF Discount Unlocked on All Plans
                     </div>
                 )}
                 <p className="paragraph-strike">THE STRIKE MEMBERSHIP</p>
@@ -152,6 +183,10 @@ const MemberShipPlane = ({ isDiscountApplied }) => {
                 <div className="plan-card strike-ultra-card">
                     <div className="card-banner-wrapper">
                         <img src="/images/strike-ultra-banner.png" alt="Strike Ultra" className="card-banner-img" />
+                        <div className="banner-best-value-badge">
+                            <BestValueSparkleIcon size={16} />
+                            <span>BEST VALUE</span>
+                        </div>
                     </div>
 
                     <div className="card-body">
@@ -178,7 +213,7 @@ const MemberShipPlane = ({ isDiscountApplied }) => {
                                     className={`duration-pill ultra-pill ${ultraDuration === '4 Years' ? 'active' : ''}`}
                                     onClick={() => setUltraDuration('4 Years')}
                                 >
-                                    4 Years <span className="pill-badge ultra-badge">Popular</span>
+                                    4 Years <span className="pill-badge ultra-badge">Best Value</span>
                                 </button>
                             </div>
                         </div>
@@ -189,7 +224,10 @@ const MemberShipPlane = ({ isDiscountApplied }) => {
                                 <span className="price-amount">{currentUltra.ultraPrice}</span>
                                 <span className="original-price">₹{currentUltra.ultraOriginal}</span>
                                 <span className="discount-tag ultra-discount-tag">{currentUltra.ultraDiscount}</span>
-                                <span className="popular-tag ultra-popular-tag">Popular</span>
+                                <span className="popular-tag ultra-popular-tag">
+                                    <BestValueSparkleIcon size={14} style={{ marginRight: '5px', verticalAlign: '-1px' }} />
+                                    Best Value
+                                </span>
                             </div>
                             <p className="duration-note">{ultraDuration} · one-time · no renewals</p>
                         </div>

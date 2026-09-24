@@ -90,7 +90,12 @@ const Review = () => {
     <section className="review-section">
       <div className="review-header">
         <div className="review-star-badge">
-          <span className="star-icon">★</span> REVIEWS
+          <span className="star-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#eab308" stroke="#eab308" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '4px' }}>
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </span>
+          REVIEWS
         </div>
         <h1 id="heading-review">Trusted by Visionaries</h1>
         <p id="para-review">
