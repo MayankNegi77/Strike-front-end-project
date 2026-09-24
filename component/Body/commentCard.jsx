@@ -3,6 +3,7 @@ import React from "react";
 const commentsData = [
   {
     id: 1,
+    userName: "Aman Sharma",
     comment:
       "Ye platform bahut achha hai. ye sbse best hai bignner ke liye maine DSA + genAi course liya tha jismai maine bahut kuch sikha hai or aj m khus ke model bna pa rha hu , DSA itni strong ho gyi h ki OA clear kr dera hu.",
     courseName: "DSA + GenAI Combo",
@@ -12,6 +13,7 @@ const commentsData = [
   },
   {
     id: 2,
+    userName: "Rohan Verma",
     comment:
       "Hey i am from chennai this platform is very helpful for my future jaurny. The promise of our mentor is not a fake. they stand on the promise and give more time to us that how much they promise us.",
     courseName: "Strike Ultra",
@@ -21,6 +23,7 @@ const commentsData = [
   },
   {
     id: 3,
+    userName: "Priya Patel",
     comment:
       "Ye platform bahut achha hai. Maine DSA + GenAI course liya tha aur honestly meri problem solving kaafi improve ho gayi. Ab OA questions pehle se kaafi jaldi solve kar leta hu.",
     courseName: "DSA + GenAI Combo",
@@ -30,6 +33,7 @@ const commentsData = [
   },
   {
     id: 4,
+    userName: "Sneha Reddy",
     comment:
       "Hey, I am from Chennai. This platform has been very helpful in my learning journey. The mentors are supportive and genuinely spend extra time to help students.",
     courseName: "Strike Plus",
@@ -39,6 +43,7 @@ const commentsData = [
   },
   {
     id: 5,
+    userName: "Arjun Nair",
     comment:
       "Maine kaafi courses try kiye the, but yaha jo roadmap mila usne meri preparation ko proper direction di. Content beginner-friendly hai.",
     courseName: "Strike Ultra",
@@ -48,6 +53,7 @@ const commentsData = [
   },
   {
     id: 6,
+    userName: "Vikram Malhotra",
     comment:
       "The structured learning path is what I liked the most. Everything is organized from basics to advanced topics.",
     courseName: "Thunder: 100 Days",
@@ -57,6 +63,7 @@ const commentsData = [
   },
   {
     id: 7,
+    userName: "Ananya Gupta",
     comment:
       "Pehle mujhe graphs aur DP se bahut darr lagta tha. Ab contests me in topics ke questions attempt kar leta hu with confidence.",
     courseName: "DSA + GenAI Combo",
@@ -66,6 +73,7 @@ const commentsData = [
   },
   {
     id: 8,
+    userName: "Kartik Singh",
     comment:
       "I cleared my first internship OA after completing the DSA modules here. The practice problems were very close to actual assessments.",
     courseName: "DSA + GenAI Combo",
@@ -75,6 +83,7 @@ const commentsData = [
   },
   {
     id: 9,
+    userName: "Devika Joshi",
     comment:
       "Mentors sirf videos nahi dete, they actually guide you whenever you get stuck. That's what makes the difference.",
     courseName: "Strike Plus",
@@ -84,6 +93,7 @@ const commentsData = [
   },
   {
     id: 10,
+    userName: "Aditya Kumar",
     comment:
       "Yaar sabse best cheez mujhe community lagi. Doubts kaafi jaldi solve ho jate hain aur motivation bhi milta rehta hai.",
     courseName: "Strike Ultra",
@@ -93,6 +103,7 @@ const commentsData = [
   },
   {
     id: 11,
+    userName: "Ishita Saxena",
     comment:
       "The GenAI content is practical and project-based. I was able to build my own AI-powered application after completing the course.",
     courseName: "DSA + GenAI Combo",
@@ -102,6 +113,7 @@ const commentsData = [
   },
   {
     id: 12,
+    userName: "Nikhil Pandey",
     comment:
       "Mujhe laga tha coding mere bas ki baat nahi hai, but the teaching style here made concepts much easier to understand.",
     courseName: "Thunder: 100 Days",
@@ -111,6 +123,7 @@ const commentsData = [
   },
   {
     id: 13,
+    userName: "Riya Deshmukh",
     comment:
       "The mock interviews were extremely useful. They helped me understand what companies actually expect from candidates.",
     courseName: "Strike Ultra",
@@ -120,6 +133,7 @@ const commentsData = [
   },
   {
     id: 14,
+    userName: "Varun Mehta",
     comment:
       "Maine yaha se Web Development course join kiya tha. Ab React projects confidently bana leta hu aur portfolio bhi ready hai.",
     courseName: "Full Stack Web Dev",
@@ -129,6 +143,7 @@ const commentsData = [
   },
   {
     id: 15,
+    userName: "Pooja Hegde",
     comment:
       "The best thing is consistency. Every week there are tasks and challenges that keep you on track.",
     courseName: "Thunder: 100 Days",
@@ -138,6 +153,7 @@ const commentsData = [
   },
   {
     id: 16,
+    userName: "Siddharth Rao",
     comment:
       "Placement preparation ke liye ye platform kaafi helpful raha. Resume reviews aur interview guidance dono useful the.",
     courseName: "Strike Plus",
@@ -147,6 +163,7 @@ const commentsData = [
   },
   {
     id: 17,
+    userName: "Meera Agarwal",
     comment:
       "I improved my LeetCode rating significantly after following the DSA roadmap provided here.",
     courseName: "DSA + GenAI Combo",
@@ -156,6 +173,7 @@ const commentsData = [
   },
   {
     id: 18,
+    userName: "Tanmay Bhatia",
     comment:
       "Pehle random YouTube videos dekhkar confuse ho jata tha. Yaha ek proper sequence mila jisse learning easy ho gayi.",
     courseName: "Thunder: 100 Days",
@@ -165,6 +183,7 @@ const commentsData = [
   },
   {
     id: 19,
+    userName: "Kavya Sharma",
     comment:
       "The mentors explain concepts with real-world examples, which makes even difficult topics easy to remember.",
     courseName: "Strike Ultra",
@@ -174,6 +193,7 @@ const commentsData = [
   },
   {
     id: 20,
+    userName: "Harsh Vardhan",
     comment:
       "Honestly, the value provided here is much better than many expensive courses available online.",
     courseName: "Strike Plus",
@@ -183,6 +203,7 @@ const commentsData = [
   },
   {
     id: 21,
+    userName: "Deepak Bansal",
     comment:
       "Maine DevOps track follow kiya aur deployment, Docker, CI/CD jaise concepts finally samajh aaye in a practical way.",
     courseName: "DevOps Track",
@@ -192,6 +213,7 @@ const commentsData = [
   },
   {
     id: 22,
+    userName: "Shreya Mishra",
     comment:
       "Agar aap beginner ho ya placement ki preparation kar rahe ho, then this platform can definitely help you build strong fundamentals.",
     courseName: "Strike Ultra",
@@ -201,53 +223,50 @@ const commentsData = [
   },
 ];
 
-// Star Rating Component (Yellow 4 Full + 1 Half for 4.5, 5 Full for 5.0)
+// Star Rating Component (Stars Only, Yellow 4 Full + 1 Half for 4.5, 5 Full for 5.0)
 const StarRating = ({ rating }) => {
   const isFourHalf = rating === 4.5;
   return (
-    <div className="comment-rating-box">
-      <span className="comment-rating-label">Rating</span>
-      <div className="comment-stars-group">
-        {[1, 2, 3, 4].map((s) => (
-          <svg
-            key={s}
-            viewBox="0 0 24 24"
-            width="13"
-            height="13"
-            fill="#eab308"
-            stroke="#eab308"
-            strokeWidth="1"
-          >
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg>
-        ))}
+    <div className="comment-stars-group">
+      {[1, 2, 3, 4].map((s) => (
+        <svg
+          key={s}
+          viewBox="0 0 24 24"
+          width="13"
+          height="13"
+          fill="#eab308"
+          stroke="#eab308"
+          strokeWidth="1"
+        >
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>
+      ))}
 
-        {isFourHalf ? (
-          <svg viewBox="0 0 24 24" width="13" height="13" stroke="#eab308" strokeWidth="1">
-            <defs>
-              <linearGradient id={`halfYellow-${rating}`}>
-                <stop offset="50%" stopColor="#eab308" />
-                <stop offset="50%" stopColor="#27272a" />
-              </linearGradient>
-            </defs>
-            <polygon
-              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-              fill={`url(#halfYellow-${rating})`}
-            />
-          </svg>
-        ) : (
-          <svg
-            viewBox="0 0 24 24"
-            width="13"
-            height="13"
-            fill="#eab308"
-            stroke="#eab308"
-            strokeWidth="1"
-          >
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg>
-        )}
-      </div>
+      {isFourHalf ? (
+        <svg viewBox="0 0 24 24" width="13" height="13" stroke="#eab308" strokeWidth="1">
+          <defs>
+            <linearGradient id={`halfYellow-${rating}`}>
+              <stop offset="50%" stopColor="#eab308" />
+              <stop offset="50%" stopColor="#27272a" />
+            </linearGradient>
+          </defs>
+          <polygon
+            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            fill={`url(#halfYellow-${rating})`}
+          />
+        </svg>
+      ) : (
+        <svg
+          viewBox="0 0 24 24"
+          width="13"
+          height="13"
+          fill="#eab308"
+          stroke="#eab308"
+          strokeWidth="1"
+        >
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>
+      )}
     </div>
   );
 };
@@ -360,14 +379,17 @@ const Card = () => {
         <h2 id="heading-comment-section">Real Stories</h2>
       </div>
 
-      {/* Marquee Track Container (No border, only floating cards) */}
+      {/* Marquee Track Container */}
       <div className="comment-marquee-wrapper">
         <div className="comment-marquee-track">
           {doubleComments.map((item, idx) => (
             <div key={idx} className="comment-single-card">
               <div className="comment-card-top">
                 <div className="comment-top-row">
-                  <StarRating rating={item.rating} />
+                  <span className="comment-user-name">{item.userName}</span>
+                  <div className="comment-stars-wrapper">
+                    <StarRating rating={item.rating} />
+                  </div>
                   <span className="comment-quote-mark">“</span>
                 </div>
                 <p className="comment-text-content">{item.comment}</p>

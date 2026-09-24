@@ -5407,7 +5407,7 @@ body {
     display: none;
 }
 
-/* Marquee Container - Sized for exactly 3 cards in view (887px max-width) */
+/* Marquee Container - Soft entry/exit edge mask fading for smooth dissolving */
 .comment-marquee-wrapper {
     position: relative;
     width: 100%;
@@ -5418,12 +5418,12 @@ body {
     max-height: fit-content;
     overflow-x: hidden !important;
     overflow-y: visible;
-    background: transparent !important;
-    background-color: transparent !important;
     border: none !important;
     box-shadow: none !important;
     padding: 10px 0;
     flex-shrink: 0;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 75px, black calc(100% - 75px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 75px, black calc(100% - 75px), transparent 100%);
 }
 
 .comment-marquee-wrapper::before,
@@ -5432,19 +5432,19 @@ body {
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 35px;
-    z-index: 1;
+    width: 75px;
+    z-index: 2;
     pointer-events: none;
 }
 
 .comment-marquee-wrapper::before {
     left: 0;
-    background: linear-gradient(to right, #060606 0%, rgba(6, 6, 6, 0) 100%);
+    background: linear-gradient(to right, #000000 0%, rgba(0, 0, 0, 0.85) 45%, rgba(0, 0, 0, 0) 100%);
 }
 
 .comment-marquee-wrapper::after {
     right: 0;
-    background: linear-gradient(to left, #060606 0%, rgba(6, 6, 6, 0) 100%);
+    background: linear-gradient(to left, #000000 0%, rgba(0, 0, 0, 0.85) 45%, rgba(0, 0, 0, 0) 100%);
 }
 
 .comment-marquee-track {
@@ -5474,8 +5474,6 @@ body {
 /* Single Comment Box Card (Symmetrical center zoom, lifts upward away from Code Editor) */
 .comment-single-card {
     position: relative;
-    background: #090a0f;
-    border: 1px solid #27272a;
     border-radius: 14px;
     padding: 12px 14px;
     width: 285px;
@@ -5486,7 +5484,6 @@ body {
     flex-direction: column;
     justify-content: space-between;
     gap: 8px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
     transform-origin: center center;
     will-change: transform;
     transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
@@ -5521,23 +5518,23 @@ body {
     width: 100%;
 }
 
-.comment-rating-box {
+.comment-user-name {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+}
+
+.comment-stars-wrapper {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
     background: rgba(234, 179, 8, 0.08);
     border: 1px solid rgba(234, 179, 8, 0.25);
     padding: 2px 7px;
-    border-radius: 8px;
-}
-
-.comment-rating-label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    color: #eab308;
-    letter-spacing: 0.4px;
-    font-family: 'Fira Code', monospace;
-    text-transform: uppercase;
+    border-radius: 20px;
 }
 
 .comment-stars-group {
